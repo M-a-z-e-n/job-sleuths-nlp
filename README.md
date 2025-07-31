@@ -1,57 +1,91 @@
-# 🕵️‍♂️ Detecting Fraudulent Job Postings Using Hybrid NLP Architectures
-
-This project aims to detect fraudulent job advertisements by combining **context-aware text embeddings** with **structured metadata features**, creating a hybrid deep learning architecture for improved accuracy and robustness.
-
-## ✨ Project Highlights
-
-- 📄 Dataset from Kaggle: [Fake Job Postings](https://www.kaggle.com/datasets/shivamb/real-or-fake-fake-jobposting-prediction)
-- 📚 Hybrid model combining **BERT embeddings** + **LSTM classifier** + **structured metadata**
-- 🔍 Performed thorough **EDA** and visualizations
-- 🎯 Tackled **class imbalance** using undersampling and data augmentation
-- 📈 Achieved significant performance improvement over BERT-only baseline
-
----
-
-## 🧑‍💻 Team Members
-
-- **Kai Park**
-- **Mazen Moustafa Sayem Abdel-tawwab**
-- **Gregori Moreira**
-- **Evana Matulula**
-- **Angie Sanchez**
-
----
-
-## 🚀 Try it on Google Colab
-
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1JipkpgEHOkEoybPXGLBUO_ADa7oEy1Ts)
 
+# 🕵️‍♂️ Detecting Fraudulent Job Postings
+
+**Project Title:** Fraud Detection in Job Postings Using Hybrid NLP Architectures with Structured Metadata Integration
+
+**Team:** Kai Park, Mazen Moustafa, Gregori Moreira, Evana Matulula, Angie Sanchez
+
 ---
 
-## ⚙️ Methodology Overview
+## 📌 Overview
 
-1. **Text Preprocessing**  
-   - Lowercasing, punctuation removal  
-   - Tokenization and padding for BERT  
-   - Data augmentation to handle class imbalance
+Online job portals face increasing fraudulent postings, compromising user safety and platform integrity. Traditional approaches focus solely on unstructured text, often ignoring valuable metadata such as salary, location, or telecommuting flags. Our goal was to build a hybrid model that integrates:
 
-2. **Text Representation**  
-   - Used pre-trained **BERT** to obtain embeddings
+* 🔤 Context-sensitive BERT-based text embeddings
+* 📊 Structured metadata (e.g., salary, company logo, employment type)
 
-3. **Model Architecture**  
-   - **LSTM** classifier for sequence modeling  
-   - Concatenated metadata features (e.g., telecommuting, salary) to BERT outputs
+This project achieved improved detection accuracy and robustness across class imbalance.
 
-4. **Training**  
-   - Loss: Binary Cross-Entropy  
-   - Optimizer: Adam  
-   - Evaluation: Accuracy, Precision, Recall, F1-Score, AUC-ROC
+---
+
+## 📁 Folder Structure
+
+```
+├── assets/                  # Screenshots & architecture visualizations
+│   ├── acc plot.png
+│   ├── loss plot.png
+│   ├── confusion matrix.png
+│   ├── Model Architecture.png
+│   ├── fake wordcloud.png
+│   └── real wordcloud.png
+├── eda.ipynb               # Exploratory data analysis notebook
+├── model.ipynb             # BERT + LSTM hybrid model implementation
+├── README.md               # Project documentation (this file)
+```
+
+---
+
+## 🧪 Dataset
+
+* **Source**: [Kaggle Job Posts Dataset](https://www.kaggle.com/datasets/shivamb/real-or-fake-fake-jobposting-prediction)
+* **Features**: Title, Description, Company Profile, Salary, Telecommuting, etc.
+* **Problem**: Highly imbalanced classes (Real vs. Fake)
+
+⚠️ Note: Dataset not uploaded due to size. Please download from Kaggle manually.
+
+---
+
+## 🧼 Data Preprocessing
+
+* Missing value handling (imputation / dropping)
+* Lowercasing & punctuation removal
+* Tokenization & padding for BERT
+* Class imbalance handled via:
+
+  * Undersampling majority class
+  * Synonym replacement (via `eda-python`)
+
+---
+
+## 🔍 Exploratory Data Analysis
+
+* Word Clouds: Visualize common terms in fake vs. real jobs
+* Metadata Correlation: Weak correlation with individual structured features, but combined they provide additive value
+
+---
+
+## 🧠 Model Architecture
+
+* BERT for text embedding
+* LSTM layer to capture sequence context
+* Concatenation with structured metadata
+* Dense layers for final binary classification
+
+---
+
+## 🏋️ Training Strategy
+
+* **Loss**: Binary Crossentropy
+* **Optimizer**: Adam
+* **Evaluation**: Accuracy, Precision, Recall, F1-score, AUC-ROC
 
 ---
 
 ## 📊 Visualizations & Model Insights
 
 ### 🧠 Model Architecture
+
 ![Model Architecture](assets/Model%20Architecture.png)
 
 ---
@@ -83,25 +117,30 @@ This project aims to detect fraudulent job advertisements by combining **context
 
 ---
 
-## 🔚 Conclusion & Future Work
+## 📌 Results
 
-✅ Integrating structured metadata alongside text representations significantly improves fraud detection performance.  
-🔄 Future work includes:
-
-- Experimenting with alternative transformers (e.g., RoBERTa, DistilBERT, JobBERT)
-- Real-time deployment via a REST API
-- Expanding feature engineering from metadata
-
-> 🧠 Fake job posts are everywhere — we're here to change that.  
-> 💼 AI Sleuths for the Job Truths.
+* **7% increase in F1-score** over BERT-only baseline
+* **Improved robustness** to class imbalance
+* **Additive value from metadata** like salary & telecommuting flag
 
 ---
 
-## 📁 Repository Structure
+## 🚀 Future Work
 
-```bash
-.
-├── assets/                     # All screenshots and visualizations
-├── notebook/                  # Colab notebooks (linked or exported)
-├── README.md                  # Project documentation
-└── requirements.txt           # (Optional) Dependencies
+* Try advanced transformer variants (RoBERTa, DistilBERT, JobBERT)
+* Real-time API deployment
+* Investigate SHAP/LIME for model explainability
+
+---
+
+## 🤝 Contact
+
+For any queries or collaboration:
+
+* 📧 [mazen110.net@gmail.com](mailto:mazen110.net@gmail.com)
+* 💼 [LinkedIn](https://www.linkedin.com/in/mazen-abdel-tawwab/)
+
+---
+
+> "Fake job posts are everywhere … we're here to change that."
+> — *AI Sleuths for the Job Truths*

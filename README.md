@@ -58,6 +58,3 @@ We used the "Fake Job Postings" dataset available on Kaggle:
 - Evana Matulula  
 - Angie Sanchez  
 - Gregori Moreira  
-
-## 📄 License
-MIT License

@@ -1,60 +1,107 @@
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1JipkpgEHOkEoybPXGLBUO_ADa7oEy1Ts)
+# 🕵️‍♂️ Detecting Fraudulent Job Postings Using Hybrid NLP Architectures
 
-# Job Sleuths: Detecting Fraudulent Job Postings Using Hybrid NLP Architectures
+This project aims to detect fraudulent job advertisements by combining **context-aware text embeddings** with **structured metadata features**, creating a hybrid deep learning architecture for improved accuracy and robustness.
 
-This project introduces a deep learning-based fraud detection system for job postings. By integrating textual data (via BERT embeddings) with structured metadata (e.g., telecommuting, salary), we improve fraud detection accuracy and robustness.
+## ✨ Project Highlights
 
-## 🎯 Objective
+- 📄 Dataset from Kaggle: [Fake Job Postings](https://www.kaggle.com/datasets/shivamb/real-or-fake-fake-jobposting-prediction)
+- 📚 Hybrid model combining **BERT embeddings** + **LSTM classifier** + **structured metadata**
+- 🔍 Performed thorough **EDA** and visualizations
+- 🎯 Tackled **class imbalance** using undersampling and data augmentation
+- 📈 Achieved significant performance improvement over BERT-only baseline
 
-Current fraud detection methods often overlook structured metadata and focus solely on job text. We propose a hybrid model that combines:
-- **Textual embeddings** from a pre-trained BERT model  
-- **Structured features** (e.g., salary, telecommuting, company profile)  
-- **LSTM layer** for sequential modeling
+---
 
-## 📦 Dataset
+## 🧑‍💻 Team Members
 
-We used the "Fake Job Postings" dataset available on Kaggle:  
-👉 [Download here](https://www.kaggle.com/datasets/shivamb/real-or-fake-fake-jobposting-prediction)
+- **Kai Park**
+- **Mazen Moustafa Sayem Abdel-tawwab**
+- **Gregori Moreira**
+- **Evana Matulula**
+- **Angie Sanchez**
 
-> ⚠️ **Note**: Due to size constraints, the dataset is not included in this repository.  
-> Please download it manually from Kaggle and place the required files inside the `data/` folder.
+---
 
-- Source: [Kaggle Fake Job Postings Dataset](https://www.kaggle.com/datasets/shivamb/real-or-fake-fake-jobposting-prediction)  
-- Features: Job title, description, benefits, telecommuting flag, salary, company info  
-- Task: Binary classification (fraudulent vs legitimate)
+## 🚀 Try it on Google Colab
 
-## 🧹 Preprocessing
-- Text cleaning (lowercasing, punctuation removal)
-- Tokenization & padding for BERT
-- Handling missing values (e.g., imputation)
-- Class imbalance mitigation using data augmentation and undersampling
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1JipkpgEHOkEoybPXGLBUO_ADa7oEy1Ts)
 
-## 📊 Exploratory Data Analysis
-- Word clouds for real vs fake job descriptions
-- Class distribution analysis
-- Correlation of structured fields with fraud label
+---
 
-## 🧠 Model Architecture
-- **Text Encoder**: BERT for contextual word embeddings
-- **Structured Input**: Concatenated with BERT output
-- **Classifier**: LSTM + Dense layers
-- **Loss**: Binary Cross-Entropy  
-- **Optimizer**: Adam  
-- **Metrics**: Accuracy, Precision, Recall, F1, AUC-ROC
+## ⚙️ Methodology Overview
 
-## ✅ Preliminary Results
-- 7% F1-score increase over BERT-only baseline
-- Significant improvement in handling class imbalance
-- Metadata features like salary and company profile add predictive value
+1. **Text Preprocessing**  
+   - Lowercasing, punctuation removal  
+   - Tokenization and padding for BERT  
+   - Data augmentation to handle class imbalance
 
-## 🔮 Future Work
-- Explore transformer alternatives: Job-BERT, RoBERTa, DistilBERT
-- Deploy model via real-time API
-- Generalize to other NLP tasks using structured + unstructured data
+2. **Text Representation**  
+   - Used pre-trained **BERT** to obtain embeddings
 
-## 👨‍💻 Team
-- Kai Park  
-- Mazen Moustafa  
-- Evana Matulula  
-- Angie Sanchez  
-- Gregori Moreira  
+3. **Model Architecture**  
+   - **LSTM** classifier for sequence modeling  
+   - Concatenated metadata features (e.g., telecommuting, salary) to BERT outputs
+
+4. **Training**  
+   - Loss: Binary Cross-Entropy  
+   - Optimizer: Adam  
+   - Evaluation: Accuracy, Precision, Recall, F1-Score, AUC-ROC
+
+---
+
+## 📊 Visualizations & Model Insights
+
+### 🧠 Model Architecture
+![Model Architecture](assets/Model%20Architecture.png)
+
+---
+
+### ☁️ Word Clouds
+
+**🔴 Fake Job Posts**
+![Fake Word Cloud](assets/fake%20wordcloud.png)
+
+**🟢 Real Job Posts**
+![Real Word Cloud](assets/real%20wordcloud.png)
+
+---
+
+### 📈 Training Progress
+
+**✅ Accuracy Over Epochs**
+![Accuracy Plot](assets/acc%20plot.png)
+
+**📉 Loss Over Epochs**
+![Loss Plot](assets/loss%20plot.png)
+
+---
+
+### 📊 Evaluation
+
+**🧾 Confusion Matrix**
+![Confusion Matrix](assets/confusion%20matrix.png)
+
+---
+
+## 🔚 Conclusion & Future Work
+
+✅ Integrating structured metadata alongside text representations significantly improves fraud detection performance.  
+🔄 Future work includes:
+
+- Experimenting with alternative transformers (e.g., RoBERTa, DistilBERT, JobBERT)
+- Real-time deployment via a REST API
+- Expanding feature engineering from metadata
+
+> 🧠 Fake job posts are everywhere — we're here to change that.  
+> 💼 AI Sleuths for the Job Truths.
+
+---
+
+## 📁 Repository Structure
+
+```bash
+.
+├── assets/                     # All screenshots and visualizations
+├── notebook/                  # Colab notebooks (linked or exported)
+├── README.md                  # Project documentation
+└── requirements.txt           # (Optional) Dependencies
